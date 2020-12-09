@@ -8,7 +8,7 @@ from nltk.corpus import wordnet as wn
 class DictionaryBuilder:
 
     def __init__(self, num_similar_words, min_length, max_length, vector_type):
-        self.pos_tagged_sets = {"adj": set(), "noun": set(), "verb": set(), "adv": set()}
+        self.pos_tagged_sets = {"adj": set(), "noun": set(), "verb": set()}
         self.model = api.load(vector_type)
         self.num_similar_words = num_similar_words
         self.min_length = min_length
@@ -62,20 +62,16 @@ class DictionaryBuilder:
                 tag = syns[0].lexname().split('.')[0]
                 if tag not in self.pos_tagged_sets:
                     continue
-                self.pos_tagged_sets[tag].add(w)
-                self.increase_adv_adj_count(tag, w)
+                if tag == "adv":
+                    self.convert_and_add(w, "happily", "happy")
+                else:
+                    self.pos_tagged_sets[tag].add(w)
 
         return self.to_lists(self.pos_tagged_sets)
 
     @staticmethod
     def to_lists(sets):
         return {k: list(v) for k, v in sets.items()}
-
-    def increase_adv_adj_count(self, tag, w):
-        if tag == "adv":
-            self.convert_and_add(w, "happily", "happy")
-        if tag == "adj":
-            self.convert_and_add(w, "happy", "happily")
 
     def convert_and_add(self, pos, neg, inp):
         positive = [inp, pos]
@@ -86,6 +82,6 @@ class DictionaryBuilder:
         syns = wn.synsets(w)
         if syns:
             tag = syns[0].lexname().split('.')[0]
-            if tag in self.pos_tagged_sets:
+            if tag == "adj":
                 self.pos_tagged_sets[tag].add(w)
         return

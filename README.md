@@ -30,7 +30,7 @@ In the file ``context.json`` there are a couple of lists:
 
 - Each word in ``wordlist`` is combined with the words in ``similar`` and ``negative``. This creates an offset in the
   meaning of the generated words.
-- Then for each word ``wordlist`` a given amount of similar words is found. This can be specified with the ``-a``
+- Then for each word in ``wordlist`` a given amount of similar words is found. This can be specified with the ``-a``
   argument
 
 So each found 'synonym' will have an offset in meaning closer to ``similar`` and further from ``negative``. This means
@@ -44,8 +44,9 @@ Adjust ``context.json`` to your liking, you will probably have to tune it a coup
 
 For testing purposes you can use a smaller dictionary and model and print 10 passwords:
 ```shell
-$ python password_generator.py -a 30 -l minlength=3 -h maxlength=10 -m glove-wiki-gigaword-50 -p 10
+$ python password_generator.py -g -a 30 -l 3 -h 10 -m glove-wiki-gigaword-50 -p 10
 ```
+This should take around 20 seconds
 
 When your passwords are starting to look nice, generate a larger dictionary with
 ```shell
