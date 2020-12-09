@@ -1,0 +1,29 @@
+Usage:
+
+password_generator.py [OPTION]...
+
+All arguments are optional:
+  -p <passwords=1>              The amount of passwords to generate
+  -g <generate-dictionary>      (Re)generate the dictionary
+
+Only influence generating the dictionary:
+  -a <amount=200>               The number of synonyms to find
+  -l <minlength=3>              The minimum length dictionary words
+  -h <maxlength=10>             The maximum length dictionary words
+  -m <model=glove-twitter-50>   The word vector model to use
+
+
+
+available models are:
+    conceptnet-numberbatch-17-06-300
+    fasttext-wiki-news-subwords-300
+    glove-twitter-100
+    glove-twitter-200
+    glove-twitter-25
+    glove-twitter-50
+    glove-wiki-gigaword-100
+    glove-wiki-gigaword-200
+    glove-wiki-gigaword-300
+    glove-wiki-gigaword-50
+    word2vec-google-news-300
+    word2vec-ruscorpora-300
