@@ -2,6 +2,9 @@
 
 This tool generates passwords based on the meanings of a list of words
 
+[This blogpost](https://www.leaf.cloud/blog/how-to-use-a-i-to-generate-meaningful-and-secure-passwords) explains more
+about how it works.
+
 ## Quickstart
 
 Install dependencies and generate your first password, using the default dictionary
@@ -43,12 +46,15 @@ The default dictionary is generated with 200 'synonyms' per word.
 Adjust ``context.json`` to your liking, you will probably have to tune it a couple of times.
 
 For testing purposes you can use a smaller dictionary and model and print 10 passwords:
+
 ```shell
 $ python password_generator.py -g -a 30 -l 3 -h 10 -m glove-wiki-gigaword-50 -p 10
 ```
+
 This should take around 20 seconds
 
 When your passwords are starting to look nice, generate a larger dictionary with
+
 ```shell
 $ python password_generator.py -g
 ```
@@ -58,7 +64,9 @@ Replace '10' with the desired amount of passwords
 ### Other options
 
 To see all available options and their meanings run:
+
 ```shell
 $ python password_generator.py -h
 ```
+
 This prints the contents of the [help file](./help)
