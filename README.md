@@ -1,6 +1,6 @@
 # Meaningful passwords
 
-This tool generates passwords based on the meanings of a list of words
+This tool generates passwords based on the meanings of a list of words using word vectors
 
 [This blogpost](https://www.leaf.cloud/blog/how-to-use-a-i-to-generate-meaningful-and-secure-passwords) explains more
 about how it works.
