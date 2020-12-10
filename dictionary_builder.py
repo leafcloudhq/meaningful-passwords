@@ -26,14 +26,12 @@ class DictionaryBuilder:
     def create_dictionary(self):
         with open('context.json', 'r') as file:
             context = json.load(file)
-        wordlist = list(context['wordlist'])
-        similar = list(context['similar'])
-        negative = list(context['negative'])
         dictionary = {}
-        for word in wordlist:
+        for word in context['wordlist']:
             if word in self.model:
                 dictionary = {**dictionary, **dict(
-                    self.model.most_similar(positive=[self.model[word]] + similar, negative=negative,
+                    self.model.most_similar(positive=[self.model[word]] + context['similar'],
+                                            negative=context['negative'],
                                             topn=self.num_similar_words))}
             else:
                 print(word, "is not in the word-vector model, skipping")
